@@ -13,4 +13,10 @@ class AccountTest {
 
         assertEquals(150, account.getBalance());
     }
+    @Test
+    void withdrawShouldDecreaseBalance() {
+        Account account = new Account(100);
+        account.withdraw(30);
+        assertEquals(70, account.getBalance());
+    }
 }
