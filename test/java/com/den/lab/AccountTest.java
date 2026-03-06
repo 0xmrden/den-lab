@@ -35,4 +35,33 @@ class AccountTest {
         assertThrows(IllegalArgumentException.class, () ->
                 account.withdraw(200));
     }
+
+    @Test
+    void depositShouldThrowExceptionWhenAmountIsZero() {
+        Account account = new Account(100);
+        assertThrows(IllegalArgumentException.class, () ->
+                account.deposit(0));
+    }
+
+    @Test
+    void depositShouldThrowExceptionWhenAmountIsNegative() {
+        Account account = new Account(100);
+        assertThrows(IllegalArgumentException.class, () ->
+                account.deposit(-50));
+    }
+
+    @Test
+    void withdrawShouldThrowExceptionWhenAmountIsNegative() {
+        Account account = new Account(100);
+        assertThrows(IllegalArgumentException.class, () ->
+                account.withdraw(-20));
+    }
+
+    @Test
+    void multipleDepositsShouldAccumulateBalance() {
+        Account account = new Account(100);
+        account.deposit(50);
+        account.deposit(25);
+        assertEquals(175, account.getBalance());
+    }
 }
