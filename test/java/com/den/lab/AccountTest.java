@@ -64,4 +64,19 @@ class AccountTest {
         account.deposit(25);
         assertEquals(175, account.getBalance());
     }
+
+    @Test
+    void withdrawExactBalanceShouldSetBalanceToZero() {
+        Account account = new Account(100);
+        account.withdraw(100);
+        assertEquals(0, account.getBalance());
+    }
+
+    @Test
+    void multipleWithdrawsShouldDecreaseBalanceCorrectly() {
+        Account account = new Account(100);
+        account.withdraw(30);
+        account.withdraw(20);
+        assertEquals(50, account.getBalance());
+    }
 }
