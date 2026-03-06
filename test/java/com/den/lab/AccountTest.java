@@ -23,7 +23,7 @@ class AccountTest {
     }
 
     @Test
-    void withdrawShouldTrowExceptionWhenAmountIsZero() {
+    void withdrawShouldThrowExceptionWhenAmountIsZero() {
         Account account = new Account(100);
         assertThrows(IllegalArgumentException.class, () ->
                 account.withdraw(0));
