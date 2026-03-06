@@ -28,4 +28,11 @@ class AccountTest {
         assertThrows(IllegalArgumentException.class, () ->
                 account.withdraw(0));
     }
+
+    @Test
+    void withdrawShouidThrowExceptionWhenAmountExceedsBalance() {
+        Account account = new Account(100);
+        assertThrows(IllegalArgumentException.class, () ->
+                account.withdraw(200));
+    }
 }
