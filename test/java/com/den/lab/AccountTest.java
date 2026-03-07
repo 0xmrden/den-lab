@@ -93,4 +93,62 @@ class AccountTest {
             new Account(0);
         });
     }
+    @Test
+    void constructorShouldSetInitialBalanceCorrectly() {
+        Account account = new Account(100);
+        assertEquals(100, account.getBalance());
+    }
+    @Test
+    void constructorShouldCreateAccountWhenInitialBalanceIsOne() {
+        Account account = new Account(1);
+        assertEquals(1,account.getBalance());
+    }
+    @Test
+    void depositShouldWorkWithAmount(){
+        Account account=new Account(100);
+        account.deposit(1);
+        assertEquals(101,account.getBalance());
+    }
+    @Test
+    void withdrawShouldWorkWithAmountOne(){
+        Account account = new Account(100);
+        account.withdraw(1);
+        assertEquals(99,account.getBalance());
+    }
+    @Test
+    void depositAfterWithdrawShouldUpdateBalanceCorrectly(){
+        Account account = new Account(100);
+        account.withdraw(30);
+        account.deposit(20);
+        assertEquals(90,account.getBalance());
+    }
+    @Test
+    void withdrawAfterDepositShouldUpdateBalanceCorrectly(){
+        Account account = new Account(100);
+        account.deposit(50);
+        account.withdraw(20);
+        assertEquals(130,account.getBalance());
+    }
+    @Test
+    void multipleOperationsShouldKeepCorrectBalance(){
+        Account account = new Account(100);
+        account.deposit(50);
+        account.withdraw(20);
+        account.deposit(10);
+        account.withdraw(30);
+        assertEquals(110,account.getBalance());
+    }
+    @Test
+    void withdrawExactBalanceAfterDepositShouldSetBalanceToZero(){
+        Account account = new Account(100);
+        account.deposit(50);
+        account.withdraw(150);
+        assertEquals(0,account.getBalance());
+    }
+    @Test
+    void constructorShouldThrowExceptionWhenInitialBalanceIsVeryNegative(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Account(-1000);
+        });
+    }
 }
