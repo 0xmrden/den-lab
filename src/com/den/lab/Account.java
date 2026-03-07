@@ -5,8 +5,8 @@ public class Account {
     private int balance;
 
     public Account(int initialBalance) {
-        if (initialBalance < 0) {
-            throw new IllegalArgumentException("Initial balance cannot be negative");
+        if (initialBalance <= 0) {
+            throw new IllegalArgumentException("Initial balance must be positive");
         }
         this.balance = initialBalance;
     }

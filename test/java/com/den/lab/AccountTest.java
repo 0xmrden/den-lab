@@ -79,4 +79,18 @@ class AccountTest {
         account.withdraw(20);
         assertEquals(50, account.getBalance());
     }
+
+    @Test
+    void constructorShouldThrowExceptionWhenInitialBalanceIsNegative() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Account(-100);
+        });
+    }
+
+    @Test
+    void constructorShouldThrowExceptionWhenInitialBalanceZero() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Account(0);
+        });
+    }
 }
