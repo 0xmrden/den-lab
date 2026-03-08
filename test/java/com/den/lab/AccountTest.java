@@ -30,7 +30,7 @@ class AccountTest {
     }
 
     @Test
-    void withdrawShouidThrowExceptionWhenAmountExceedsBalance() {
+    void withdrawShouldThrowExceptionWhenAmountExceedsBalance() {
         Account account = new Account(100);
         assertThrows(IllegalArgumentException.class, () ->
                 account.withdraw(200));
@@ -82,73 +82,79 @@ class AccountTest {
 
     @Test
     void constructorShouldThrowExceptionWhenInitialBalanceIsNegative() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Account(-100);
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+                new Account(-100));
     }
 
     @Test
     void constructorShouldThrowExceptionWhenInitialBalanceZero() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Account(0);
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+                new Account(0));
     }
+
     @Test
     void constructorShouldSetInitialBalanceCorrectly() {
         Account account = new Account(100);
         assertEquals(100, account.getBalance());
     }
+
     @Test
     void constructorShouldCreateAccountWhenInitialBalanceIsOne() {
         Account account = new Account(1);
-        assertEquals(1,account.getBalance());
+        assertEquals(1, account.getBalance());
     }
+
     @Test
-    void depositShouldWorkWithAmount(){
-        Account account=new Account(100);
+    void depositShouldWorkWithAmount() {
+        Account account = new Account(100);
         account.deposit(1);
-        assertEquals(101,account.getBalance());
+        assertEquals(101, account.getBalance());
     }
+
     @Test
-    void withdrawShouldWorkWithAmountOne(){
+    void withdrawShouldWorkWithAmountOne() {
         Account account = new Account(100);
         account.withdraw(1);
-        assertEquals(99,account.getBalance());
+        assertEquals(99, account.getBalance());
     }
+
     @Test
-    void depositAfterWithdrawShouldUpdateBalanceCorrectly(){
+    void depositAfterWithdrawShouldUpdateBalanceCorrectly() {
         Account account = new Account(100);
         account.withdraw(30);
         account.deposit(20);
-        assertEquals(90,account.getBalance());
+        assertEquals(90, account.getBalance());
     }
+
     @Test
-    void withdrawAfterDepositShouldUpdateBalanceCorrectly(){
+    void withdrawAfterDepositShouldUpdateBalanceCorrectly() {
         Account account = new Account(100);
         account.deposit(50);
         account.withdraw(20);
-        assertEquals(130,account.getBalance());
+        assertEquals(130, account.getBalance());
     }
+
     @Test
-    void multipleOperationsShouldKeepCorrectBalance(){
+    void multipleOperationsShouldKeepCorrectBalance() {
         Account account = new Account(100);
         account.deposit(50);
         account.withdraw(20);
         account.deposit(10);
         account.withdraw(30);
-        assertEquals(110,account.getBalance());
+        assertEquals(110, account.getBalance());
     }
+
     @Test
-    void withdrawExactBalanceAfterDepositShouldSetBalanceToZero(){
+    void withdrawExactBalanceAfterDepositShouldSetBalanceToZero() {
         Account account = new Account(100);
         account.deposit(50);
         account.withdraw(150);
-        assertEquals(0,account.getBalance());
+        assertEquals(0, account.getBalance());
     }
+
     @Test
-    void constructorShouldThrowExceptionWhenInitialBalanceIsVeryNegative(){
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Account(-1000);
-        });
+    void constructorShouldThrowExceptionWhenInitialBalanceIsVeryNegative() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Account(-1000));
     }
 }
