@@ -26,6 +26,9 @@ public class Account {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdraw amount must be positive");
         }
+        if (balance == 0) {
+            throw new IllegalArgumentException("Balance is zero");
+        }
 
         if (amount > balance) {
             throw new IllegalArgumentException("Insufficient funds");
