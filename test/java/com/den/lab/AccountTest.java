@@ -164,4 +164,10 @@ class AccountTest {
         assertThrows(IllegalArgumentException.class, () ->
                 account.withdraw(10));
     }
+    @Test
+    void depositShouldFailWhenAmountTooLarge() {
+        Account account = new Account(100);
+        assertThrows(IllegalArgumentException.class, () ->
+                account.deposit(2_000_000));
+    }
 }

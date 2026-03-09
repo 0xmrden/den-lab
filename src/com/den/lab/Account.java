@@ -19,6 +19,9 @@ public class Account {
         if (amount <= 0) {
             throw new IllegalArgumentException("Deposit amount must be positive");
         }
+        if (amount > 1_000_000) {
+            throw new IllegalArgumentException("Deposit fail when amount too large");
+        }
         balance += amount;
     }
 
@@ -35,5 +38,22 @@ public class Account {
         }
 
         balance -= amount;
+    }
+    public void transfer(Account target, int amount) {
+        if (target == null) {
+            throw new IllegalArgumentException("Target account cannot be null");
+        }
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        if (balance == 0){
+            throw new IllegalArgumentException("Balance is zero");
+        }
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient funds");
+        }
+
+        withdraw(amount);
+        target.deposit(amount);
     }
 }
