@@ -170,4 +170,12 @@ class AccountTest {
         assertThrows(IllegalArgumentException.class, () ->
                 account.deposit(2_000_000));
     }
+    @Test
+    void transferShouldMoveMoneyBetweenAccounts() {
+        Account a = new Account(100);
+        Account b = new Account(50);
+        a.transfer(b, 40);
+        assertEquals(60, a.getBalance());
+        assertEquals(90, b.getBalance());
+    }
 }

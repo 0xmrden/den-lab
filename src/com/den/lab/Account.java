@@ -1,5 +1,6 @@
 package com.den.lab;
 
+
 public class Account {
 
     private int balance;
