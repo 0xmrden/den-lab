@@ -184,4 +184,43 @@ class AccountTest {
         assertThrows(IllegalArgumentException.class,() ->
             a.transfer(null, 50));
     }
+    @Test
+    void transferShouldFailWhenAmountExceedsBalance() {
+
+        Account a = new Account(100);
+        Account b = new Account(50);
+
+        assertThrows(IllegalArgumentException.class, () ->
+            a.transfer(b, 150));
+    }
+    @Test
+    void transferShouldFailWhenAmountIsZero() {
+
+        Account a = new Account(100);
+        Account b = new Account(50);
+
+        assertThrows(IllegalArgumentException.class, () ->
+            a.transfer(b, 0));
+    }
+    @Test
+    void transferShouldFailWhenAmountIsNegative() {
+
+        Account a = new Account(100);
+        Account b = new Account(50);
+
+        assertThrows(IllegalArgumentException.class, () ->
+            a.transfer(b, -20));
+    }
+    @Test
+    void transferShouldNotChangeBalancesWhenTransferFails() {
+
+        Account a = new Account(100);
+        Account b = new Account(50);
+
+        assertThrows(IllegalArgumentException.class, () ->
+            a.transfer(b, 200));
+
+        assertEquals(100, a.getBalance());
+        assertEquals(50, b.getBalance());
+    }
 }
