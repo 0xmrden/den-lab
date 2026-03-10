@@ -178,4 +178,10 @@ class AccountTest {
         assertEquals(60, a.getBalance());
         assertEquals(90, b.getBalance());
     }
+    @Test
+    void transferShouldFalWhenTargetIsNull(){
+        Account a = new Account(100);
+        assertThrows(IllegalArgumentException.class,() ->
+            a.transfer(null, 50));
+    }
 }

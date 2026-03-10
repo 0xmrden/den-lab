@@ -47,13 +47,9 @@ public class Account {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive");
         }
-        if (balance == 0){
-            throw new IllegalArgumentException("Balance is zero");
-        }
         if (amount > balance) {
             throw new IllegalArgumentException("Insufficient funds");
         }
-
         withdraw(amount);
         target.deposit(amount);
     }
