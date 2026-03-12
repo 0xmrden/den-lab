@@ -14,3 +14,8 @@ Topics covered:
 - Algorithms
 
 Learning by building.
+---
+
+## Learning Progress
+
+Day 1 — Java project structure
