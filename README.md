@@ -19,3 +19,4 @@ Learning by building.
 ## Learning Progress
 
 Day 1 — Java project structure
+Day 2 — class and object
