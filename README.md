@@ -21,3 +21,4 @@ Learning by building.
 - Day 1 Java project structure
 - Day 2 class and object
 - Day 3 object state and field 
+- Day 4 method responsibility
