@@ -23,3 +23,4 @@ Learning by building.
 - Day 3 object state and field 
 - Day 4 method responsibility
 - Day 5 object invariants
+- Day 6 guard clauses
