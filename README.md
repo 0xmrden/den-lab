@@ -24,3 +24,4 @@ Learning by building.
 - Day 4 method responsibility
 - Day 5 object invariants
 - Day 6 guard clauses
+- Day 7 fail safely principle
