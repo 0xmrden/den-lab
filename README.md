@@ -26,3 +26,4 @@ Learning by building.
 - Day 6 guard clauses
 - Day 7 fail safely principle
 - Day 8 edge cases
+- Day 9 method testing concept 
