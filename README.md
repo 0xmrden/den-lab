@@ -27,3 +27,4 @@ Learning by building.
 - Day 7 fail safely principle
 - Day 8 edge cases
 - Day 9 method testing concept 
+- Day 10 readable tests 
