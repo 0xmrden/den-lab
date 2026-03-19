@@ -30,3 +30,4 @@ Learning by building.
 - Day 10 readable tests 
 - Day 11 test refactoring 
 - Day 12 test design 
+- Day 13 method analysis 
