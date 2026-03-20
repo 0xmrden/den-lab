@@ -31,3 +31,4 @@ Learning by building.
 - Day 11 test refactoring 
 - Day 12 test design 
 - Day 13 method analysis 
+- Day 14 test design (scenario selection)
