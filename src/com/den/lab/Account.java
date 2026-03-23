@@ -16,12 +16,18 @@ public class Account {
         return balance;
     }
 
-    public void deposit(int amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be positive");
-        }
-        if (amount > 1_000_000) {
-            throw new IllegalArgumentException("Deposit fail when amount too large");
+    //public void deposit(int amount) {
+        //if (amount <= 0) {
+            //throw new IllegalArgumentException("Deposit amount must be positive");
+        //}
+        //if (amount > 1_000_000) {
+            //throw new IllegalArgumentException("Deposit fail when amount too large");
+        //}
+        //balance += amount;
+    //}
+    public void deposit(int amount){
+        if (amount<=0){
+            return;
         }
         balance += amount;
     }
