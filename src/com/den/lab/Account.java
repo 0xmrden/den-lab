@@ -4,6 +4,7 @@ package com.den.lab;
 public class Account {
 
     private int balance;
+    String owner;
 
     public Account(int initialBalance) {
         if (initialBalance <= 0) {
