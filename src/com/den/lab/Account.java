@@ -17,34 +17,19 @@ public class Account {
         return balance;
     }
 
-    //public void deposit(int amount) {
-        //if (amount <= 0) {
-            //throw new IllegalArgumentException("Deposit amount must be positive");
-        //}
-        //if (amount > 1_000_000) {
-            //throw new IllegalArgumentException("Deposit fail when amount too large");
-        //}
-        //balance += amount;
-    //}
-    public void deposit(int amount){
-        if (amount<=0){
-            return;
+    public void deposit(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Deposit amount must be positive");
+        }
+        if (amount > 1_000_000) {
+            throw new IllegalArgumentException("Deposit fail when amount too large");
         }
         balance += amount;
     }
-
     public void withdraw(int amount) {
-        if (amount <= 0) {
+        if (amount <= 0 ||amount > balance ){
             throw new IllegalArgumentException("Withdraw amount must be positive");
         }
-        if (balance == 0) {
-            throw new IllegalArgumentException("Balance is zero");
-        }
-
-        if (amount > balance) {
-            throw new IllegalArgumentException("Insufficient funds");
-        }
-
         balance -= amount;
     }
     public void transfer(Account target, int amount) {
