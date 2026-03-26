@@ -31,8 +31,9 @@ class AccountTest {
         // arrange
         Account account = new Account(100);
         // act + assert
-        assertThrows(IllegalArgumentException.class, () ->
-                account.withdraw(0));
+        account.withdraw(0);
+       assertEquals(100,account.getBalance());
+
     }
 
     @Test
@@ -40,8 +41,8 @@ class AccountTest {
         // arrange
         Account account = new Account(100);
         // act + assert
-        assertThrows(IllegalArgumentException.class, () ->
-                account.withdraw(200));
+                account.withdraw(200);
+                assertEquals(100,account.getBalance());
     }
 
     @Test
@@ -67,8 +68,8 @@ class AccountTest {
         // arrange
         Account account = new Account(100);
         // act + assert
-        assertThrows(IllegalArgumentException.class, () ->
-                account.withdraw(-20));
+                account.withdraw(-20);
+                assertEquals(100,account.getBalance());
     }
 
     @Test
@@ -212,8 +213,8 @@ class AccountTest {
         // act
         account.withdraw(10);
         // assert
-        assertThrows(IllegalArgumentException.class, () ->
-                account.withdraw(10));
+                account.withdraw(10);
+                assertEquals(0,account.getBalance());
     }
     @Test
     void depositShouldFailWhenAmountTooLarge() {

@@ -27,9 +27,8 @@ public class Account {
         balance += amount;
     }
     public void withdraw(int amount) {
-        if (amount <= 0 ||amount > balance ){
-            throw new IllegalArgumentException("Withdraw amount must be positive");
-        }
+        if (amount <= 0) return;
+        if (amount > balance) return;
         balance -= amount;
     }
     public void transfer(Account target, int amount) {
