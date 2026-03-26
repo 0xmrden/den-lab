@@ -18,9 +18,7 @@ public class Account {
     }
 
     public void deposit(int amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be positive");
-        }
+        if (amount <= 0) return;
         if (amount > 1_000_000) {
             throw new IllegalArgumentException("Deposit fail when amount too large");
         }

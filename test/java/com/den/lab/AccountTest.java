@@ -15,7 +15,16 @@ class AccountTest {
         // assert
         assertEquals(150, account.getBalance());
     }
+@Test
+void depositShouldNotChangeBalanceWhenAmountIsNegative(){
+        //arrange
+    Account account = new Account(100);
+    //act
+    account.deposit(-10);
+    //assert
+    assertEquals(100,account.getBalance());
 
+}
     @Test
     void withdrawShouldDecreaseBalance() {
         // arrange
@@ -44,25 +53,6 @@ class AccountTest {
                 account.withdraw(200);
                 assertEquals(100,account.getBalance());
     }
-
-    @Test
-    void depositShouldThrowExceptionWhenAmountIsZero() {
-        // arrange
-        Account account = new Account(100);
-        // act + assert
-        assertThrows(IllegalArgumentException.class, () ->
-                account.deposit(0));
-    }
-
-    @Test
-    void depositShouldThrowExceptionWhenAmountIsNegative() {
-        // arrange
-        Account account = new Account(100);
-        // act + assert
-        assertThrows(IllegalArgumentException.class, () ->
-                account.deposit(-50));
-    }
-
     @Test
     void withdrawShouldThrowExceptionWhenAmountIsNegative() {
         // arrange
