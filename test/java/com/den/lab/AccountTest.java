@@ -36,7 +36,7 @@ void depositShouldNotChangeBalanceWhenAmountIsNegative(){
     }
 
     @Test
-    void withdrawShouldThrowExceptionWhenAmountIsZero() {
+    void withdrawShouldNotChangeBalanceWhenAmountIsZero() {
         // arrange
         Account account = new Account(100);
         // act + assert
@@ -46,7 +46,7 @@ void depositShouldNotChangeBalanceWhenAmountIsNegative(){
     }
 
     @Test
-    void withdrawShouldThrowExceptionWhenAmountExceedsBalance() {
+    void withdrawShouldNotChangeBalanceWhenAmountExceedsBalance() {
         // arrange
         Account account = new Account(100);
         // act + assert
@@ -54,7 +54,7 @@ void depositShouldNotChangeBalanceWhenAmountIsNegative(){
                 assertEquals(100,account.getBalance());
     }
     @Test
-    void withdrawShouldThrowExceptionWhenAmountIsNegative() {
+    void withdrawShouldNotChangeBalanceWhenAmountIsNegative() {
         // arrange
         Account account = new Account(100);
         // act + assert
