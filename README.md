@@ -32,4 +32,5 @@ Learning by building.
 - Day 12 test design 
 - Day 13 method analysis 
 - Day 14 test design (scenario selection)
-- Day 15 object model  
+- Day 15 object model
+- Day 16 state and behavior
