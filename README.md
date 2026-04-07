@@ -34,3 +34,4 @@ Learning by building.
 - Day 14 test design (scenario selection)
 - Day 15 object model
 - Day 16 state and behavior
+- Day 17 domain invariants 
