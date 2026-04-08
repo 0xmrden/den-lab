@@ -35,3 +35,4 @@ Learning by building.
 - Day 15 object model
 - Day 16 state and behavior
 - Day 17 domain invariants 
+- Day 18 forbidden states 
