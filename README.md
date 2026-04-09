@@ -36,3 +36,4 @@ Learning by building.
 - Day 16 state and behavior
 - Day 17 domain invariants 
 - Day 18 forbidden states 
+- Day 19 domain operations 
