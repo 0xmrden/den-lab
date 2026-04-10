@@ -37,3 +37,4 @@ Learning by building.
 - Day 17 domain invariants 
 - Day 18 forbidden states 
 - Day 19 domain operations 
+- Day 20 method design 
