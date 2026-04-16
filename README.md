@@ -39,3 +39,4 @@ Learning by building.
 - Day 19 domain operations 
 - Day 20 method design 
 - Day 21 domain testing
+- Day 22 behavior scenarios
