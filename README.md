@@ -40,3 +40,4 @@ Learning by building.
 - Day 20 method design 
 - Day 21 domain testing
 - Day 22 behavior scenarios
+- Day 23 domain model refactoring
