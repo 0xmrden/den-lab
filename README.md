@@ -1,43 +1,102 @@
 # den-lab
 
-Java learning lab for backend development.
+# Account Domain Model — Java Backend
 
-This repository contains small exercises and experiments while learning Java backend development.
+## Overview
 
-Topics covered:
+This project demonstrates a basic domain model for managing account balance with clearly defined behavior and state protection.
 
-- Java Core
-- OOP
-- Collections
-- Streams
-- JUnit testing
-- Algorithms
+Focus:
+— invariant protection (balance ≥ 0)
+— method contracts
+— fail-safe behavior
+— scenario-based testing
 
-Learning by building.
 ---
 
-## Learning Progress
+## Domain Model
 
-- Day 1 Java project structure
-- Day 2 class and object
-- Day 3 object state and field 
-- Day 4 method responsibility
-- Day 5 object invariants
-- Day 6 guard clauses
-- Day 7 fail safely principle
-- Day 8 edge cases
-- Day 9 method testing concept 
-- Day 10 readable tests 
-- Day 11 test refactoring 
-- Day 12 test design 
-- Day 13 method analysis 
-- Day 14 test design (scenario selection)
-- Day 15 object model
-- Day 16 state and behavior
-- Day 17 domain invariants 
-- Day 18 forbidden states 
-- Day 19 domain operations 
-- Day 20 method design 
-- Day 21 domain testing
-- Day 22 behavior scenarios
-- Day 23 domain model refactoring
+Entity:
+— `Account`
+
+State:
+— `balance`
+
+Invariant:
+— balance must never be negative
+
+---
+
+## Implemented Operations
+
+### deposit(amount)
+
+— increases balance
+— ignores invalid input (amount ≤ 0)
+— throws exception if amount is too large
+
+### withdraw(amount)
+
+— decreases balance
+— does nothing if:
+— amount ≤ 0
+— amount > balance
+
+### transfer(target, amount)
+
+— transfers balance between accounts
+— validates:
+— target is not null
+— amount is valid
+— preserves invariants on both accounts
+
+---
+
+## Behavior Model
+
+Each method is designed through scenarios:
+
+— normal (valid operation)
+— edge (boundary conditions)
+— error (invalid input, no state change)
+
+---
+
+## Testing Approach
+
+Tests validate behavior through state:
+
+— assertEquals → state verification
+— assertThrows → critical failures
+
+Each method is covered by:
+— normal scenario
+— edge cases
+— error scenarios
+
+---
+
+## Project Structure
+
+src/
+— Account.java
+— Main.java
+
+test/
+— AccountTest.java
+
+practice/
+— local sandbox (not part of final implementation)
+
+---
+
+## Engineering Focus
+
+This project demonstrates:
+
+— thinking in terms of domain behavior
+— protecting system invariants
+— designing predictable methods
+— writing reliable tests
+
+Focus is on correctness and clarity, not complexity.

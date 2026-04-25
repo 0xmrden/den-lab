@@ -4,7 +4,6 @@ package com.den.lab;
 public class Account {
 
     private int balance;
-    String owner;
 
     public Account(int initialBalance) {
         if (initialBalance <= 0) {
@@ -35,9 +34,6 @@ public class Account {
         }
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive");
-        }
-        if (amount > balance) {
-            throw new IllegalArgumentException("Insufficient funds");
         }
         withdraw(amount);
         target.deposit(amount);
