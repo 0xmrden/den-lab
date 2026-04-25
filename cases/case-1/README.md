@@ -1,71 +1,65 @@
-Case 1 — Withdraw Protection
+# Case 1 — Withdraw Protection
 
-Problem
-Method allowed invalid operations that could break balance logic:
-— allows negative balance
-— no check for insufficient funds
+## Problem
 
-Solution
-Added guard clauses to prevent invalid input and protect invariants.
+The `withdraw` method allowed invalid operations that could break the account state.
 
-What was done
-— blocked negative and zero amounts
-— prevented overdraft
-— ensured method fails safely
+In particular:
+— it did not properly prevent withdrawing more than the available balance
+— it could lead to incorrect or unpredictable behavior
 
-Result
-Balance remains valid under all scenarios.
+---
 
-Tests
-Covers:
-— normal case
-— edge cases
-— invalid input
+## What was wrong
 
-Buggy Code
+The method lacked proper validation for input conditions.
 
-public void withdraw(int amount) {
-if (amount <= 0) return;
-balance -= amount;
-}
+There was no clear rule defining:
+— which inputs are valid
+— how the system should behave when inputs are invalid
 
-Fixed Code
+As a result, the method did not reliably protect the domain invariant.
 
-public void withdraw(int amount) {
-if (amount <= 0) return;
-if (amount > balance) return;
-balance -= amount;
-}
+---
 
-Tests (example)
+## Solution
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+Introduced guard clauses to validate input before applying any state changes:
 
-class AccountTest {
-@Test  
-void withdrawShouldDecreaseBalance() {  
-Account account = new Account(100);
+— reject non-positive amounts (`amount ≤ 0`)
+— reject amounts greater than the current balance
 
-    account.withdraw(30);  
+The method now follows a fail-safe approach:
+it exits early without modifying state when input is invalid.
 
-    assertEquals(70, account.getBalance());  
-}
+---
 
-@Test  
-void withdrawShouldNotChangeBalanceWhenAmountExceedsBalance() {  
-Account account = new Account(100);
+## Result
 
-    account.withdraw(200);  
+The account state is now protected:
 
-    assertEquals(100, account.getBalance());  
-}
+— balance never becomes negative
+— invalid operations do not affect the system
+— behavior is predictable and consistent
 
-@Test  
-void withdrawShouldNotChangeBalanceWhenAmountIsNegative() {  
-Account account = new Account(100);
+---
 
-    account.withdraw(-20);  
+## Tests
 
-    assertEquals(100, account.getBalance());  
-}
+Behavior is validated through state-based tests:
+
+— valid withdraw decreases balance
+— withdrawing the full balance results in zero
+— withdrawing more than balance does not change state
+— zero and negative amounts are ignored
+
+---
+
+## Key Takeaway
+
+Protecting the invariant is more important than executing the operation.
+
+A method must define:
+— what is allowed
+— what is rejected
+— what is guaranteed after execution
