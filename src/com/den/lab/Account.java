@@ -1,6 +1,4 @@
 package com.den.lab;
-
-
 public class Account {
 
     private int balance;
@@ -23,11 +21,20 @@ public class Account {
         }
         balance += amount;
     }
+
     public void withdraw(int amount) {
-        if (amount <= 0) return;
-        if (amount > balance) return;
-        balance -= amount;
+        if (amount < 0) {
+            throw new IllegalArgumentException("amount < 0");
+        }
+        if (amount == 0) {
+            return;
+        }
+        if (amount > balance) {
+            return;
+        }
+        balance = balance - amount;
     }
+
     public void transfer(Account target, int amount) {
         if (target == null) {
             throw new IllegalArgumentException("Target account cannot be null");
