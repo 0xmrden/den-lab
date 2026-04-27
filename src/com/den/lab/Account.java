@@ -14,12 +14,11 @@ public class Account {
         return balance;
     }
 
-    public void deposit(int amount) {
-        if (amount <= 0) return;
-        if (amount > 1_000_000) {
-            throw new IllegalArgumentException("Deposit fail when amount too large");
+    public void deposit ( int amount ) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("amount must be > 0");
         }
-        balance += amount;
+        balance = balance + amount;
     }
 
     public void withdraw(int amount) {

@@ -50,4 +50,34 @@ public class AccountTest {
 
         assertEquals(100, account.getBalance());
     }
+    @Test
+    void depositShouldIncreaseBalance_whenAmountIsValid() {
+        Account account = new Account(100);
+
+        account.deposit(50);
+
+        assertEquals(150, account.getBalance());
+    }
+
+    @Test
+    void depositShouldThrowException_whenAmountIsZero() {
+        Account account = new Account(100);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            account.deposit(0);
+        });
+
+        assertEquals(100, account.getBalance());
+    }
+
+    @Test
+    void depositShouldThrowException_whenAmountIsNegative() {
+        Account account = new Account(100);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            account.deposit(-10);
+        });
+
+        assertEquals(100, account.getBalance());
+    }
 }
