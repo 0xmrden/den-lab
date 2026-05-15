@@ -39,19 +39,10 @@ Each case follows the same structure:
 
 Preventing invalid withdraw operations and protecting account state.
 
-(more cases will be added over time)
+### Case 2 — Transfer Safety
 
----
+Preventing unsafe transfer behavior and protecting both sender and target accounts.
 
-## Focus
+### Case 3 — Error Handling Contract
 
-These cases are not about writing more code.
-
-They demonstrate:
-— how decisions are made
-— how logic is corrected
-— how predictable behavior is achieved
-
----
-
-This section reflects engineering thinking, not just implementation.
+Defining method behavior for invalid input, unsafe operations, and state consistency after failure.
