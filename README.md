@@ -9,8 +9,9 @@ This project demonstrates a basic domain model for managing account balance with
 Focus:
 — invariant protection (balance ≥ 0)
 — method contracts
-— fail-safe behavior
+— fail fast / fail safely behavior
 — scenario-based testing
+— state consistency after errors
 
 ---
 
@@ -31,23 +32,23 @@ Invariant:
 
 ### deposit(amount)
 
-— increases balance
-— ignores invalid input (amount ≤ 0)
-— throws exception if amount is too large
+— throws exception when amount ≤ 0
+— increases balance only for valid input
 
 ### withdraw(amount)
 
-— decreases balance
-— does nothing if:
-— amount ≤ 0
+— decreases balance for valid input
+— throws exception when amount < 0
+— does nothing when:
+— amount == 0
 — amount > balance
 
 ### transfer(target, amount)
 
 — transfers balance between accounts
-— validates:
-— target is not null
-— amount is valid
+— throws exception when target is null
+— throws exception when amount ≤ 0
+— does nothing when amount exceeds sender balance
 — preserves invariants on both accounts
 
 ---
@@ -56,9 +57,11 @@ Invariant:
 
 Each method is designed through scenarios:
 
-— normal (valid operation)
-— edge (boundary conditions)
-— error (invalid input, no state change)
+— normal scenario
+— edge scenario
+— error scenario
+
+Failed operations must not break object state.
 
 ---
 
@@ -66,13 +69,14 @@ Each method is designed through scenarios:
 
 Tests validate behavior through state:
 
-— assertEquals → state verification
-— assertThrows → critical failures
+— `assertEquals` → state verification
+— `assertThrows` → exception verification
 
 Each method is covered by:
-— normal scenario
-— edge cases
-— error scenarios
+— valid operation
+— boundary behavior
+— invalid input
+— state consistency after failure
 
 ---
 
@@ -85,8 +89,11 @@ src/
 test/
 — AccountTest.java
 
+cases/
+— portfolio-ready engineering cases
+
 practice/
-— local sandbox (not part of final implementation)
+— local sandbox, not part of final implementation
 
 ---
 
@@ -96,7 +103,8 @@ This project demonstrates:
 
 — thinking in terms of domain behavior
 — protecting system invariants
-— designing predictable methods
-— writing reliable tests
+— designing predictable method contracts
+— choosing fail fast or fail safely intentionally
+— writing tests for normal, edge, and error scenarios
 
 Focus is on correctness and clarity, not complexity.
