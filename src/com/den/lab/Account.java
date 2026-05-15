@@ -1,4 +1,5 @@
 package com.den.lab;
+
 public class Account {
 
     private int balance;
@@ -14,10 +15,11 @@ public class Account {
         return balance;
     }
 
-    public void deposit ( int amount ) {
+    public void deposit(int amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("amount must be > 0");
         }
+
         balance = balance + amount;
     }
 
@@ -25,12 +27,15 @@ public class Account {
         if (amount < 0) {
             throw new IllegalArgumentException("amount < 0");
         }
+
         if (amount == 0) {
             return;
         }
+
         if (amount > balance) {
             return;
         }
+
         balance = balance - amount;
     }
 
@@ -38,9 +43,15 @@ public class Account {
         if (target == null) {
             throw new IllegalArgumentException("Target account cannot be null");
         }
+
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive");
         }
+
+        if (amount > balance) {
+            return;
+        }
+
         withdraw(amount);
         target.deposit(amount);
     }
