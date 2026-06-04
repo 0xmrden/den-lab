@@ -46,3 +46,7 @@ Preventing unsafe transfer behavior and protecting both sender and target accoun
 ### Case 3 — Error Handling Contract
 
 Defining method behavior for invalid input, unsafe operations, and state consistency after failure.
+
+### Case 4 — Protecting System State Through Collections
+
+Demonstrating how a system protects its internal state through controlled collections, immutable access, duplicate protection, and object copy isolation.
