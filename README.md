@@ -73,6 +73,7 @@ Tests validate behavior through state:
 — `assertThrows` → exception verification
 
 Each method is covered by:
+
 — valid operation
 — boundary behavior
 — invalid input
@@ -94,6 +95,18 @@ cases/
 
 practice/
 — local sandbox, not part of final implementation
+
+---
+
+## Repository Evolution
+
+This repository documents the evolution of engineering thinking rather than presenting a single finished architecture.
+
+Cases 1–4 preserve the original implementation style used during the early learning stage.
+
+Starting with Case 5, larger artifacts are implemented in isolated packages to support increasing complexity while keeping each engineering case independent and maintainable.
+
+The earlier cases remain intentionally unchanged as evidence of the learning path and the gradual evolution of design decisions.
 
 ---
 
