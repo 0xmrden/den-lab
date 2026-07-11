@@ -1,123 +1,164 @@
 # den-lab
 
-# Account Domain Model — Java Backend
+# Java Backend Engineering Lab
 
 ## Overview
 
-This project demonstrates a basic domain model for managing account balance with clearly defined behavior and state protection.
+This repository documents the gradual evolution of backend engineering thinking
+through practical engineering artifacts.
 
-Focus:
-— invariant protection (balance ≥ 0)
-— method contracts
-— fail fast / fail safely behavior
-— scenario-based testing
-— state consistency after errors
+Rather than presenting isolated programming exercises,
+each artifact demonstrates how business behavior is analyzed,
+modeled, implemented, and verified through automated tests.
 
----
-
-## Domain Model
-
-Entity:
-— `Account`
-
-State:
-— `balance`
-
-Invariant:
-— balance must never be negative
-
----
-
-## Implemented Operations
-
-### deposit(amount)
-
-— throws exception when amount ≤ 0
-— increases balance only for valid input
-
-### withdraw(amount)
-
-— decreases balance for valid input
-— throws exception when amount < 0
-— does nothing when:
-— amount == 0
-— amount > balance
-
-### transfer(target, amount)
-
-— transfers balance between accounts
-— throws exception when target is null
-— throws exception when amount ≤ 0
-— does nothing when amount exceeds sender balance
-— preserves invariants on both accounts
-
----
-
-## Behavior Model
-
-Each method is designed through scenarios:
-
-— normal scenario
-— edge scenario
-— error scenario
-
-Failed operations must not break object state.
-
----
-
-## Testing Approach
-
-Tests validate behavior through state:
-
-— `assertEquals` → state verification
-— `assertThrows` → exception verification
-
-Each method is covered by:
-
-— valid operation
-— boundary behavior
-— invalid input
-— state consistency after failure
-
----
-
-## Project Structure
-
-src/
-— Account.java
-— Main.java
-
-test/
-— AccountTest.java
-
-cases/
-— portfolio-ready engineering cases
-
-practice/
-— local sandbox, not part of final implementation
-
----
-
-## Repository Evolution
-
-This repository documents the evolution of engineering thinking rather than presenting a single finished architecture.
-
-Cases 1–4 preserve the original implementation style used during the early learning stage.
-
-Starting with Case 5, larger artifacts are implemented in isolated packages to support increasing complexity while keeping each engineering case independent and maintainable.
-
-The earlier cases remain intentionally unchanged as evidence of the learning path and the gradual evolution of design decisions.
+The focus is on building predictable systems whose behavior is protected by
+engineering contracts, validation, and executable tests.
 
 ---
 
 ## Engineering Focus
 
-This project demonstrates:
+The repository demonstrates:
 
-— thinking in terms of domain behavior
-— protecting system invariants
-— designing predictable method contracts
-— choosing fail fast or fail safely intentionally
-— writing tests for normal, edge, and error scenarios
+- domain modeling;
+- engineering contracts;
+- invariant protection;
+- fail-fast / fail-safe behavior;
+- state consistency;
+- collection safety;
+- derived state synchronization;
+- type-safe domain modeling;
+- scenario-based automated testing.
 
-Focus is on correctness and clarity, not complexity.
+The goal is correctness, predictability,
+and clarity rather than architectural complexity.
+
+---
+
+## Repository Structure
+
+```text
+src/
+    production implementation
+
+test/
+    automated tests
+
+cases/
+    engineering case documentation
+
+practice/
+    local experiments
+    not part of the published artifacts
+```
+
+---
+
+## Engineering Progression
+
+The repository is intentionally organized
+as a sequence of engineering cases.
+
+Early cases focus on protecting
+individual operations and object state.
+
+Later cases gradually expand toward:
+
+- collection safety;
+- derived state synchronization;
+- domain modeling;
+- type-safe business contracts.
+
+Each new artifact builds upon ideas introduced
+in previous cases while remaining independently understandable.
+
+Earlier artifacts intentionally remain unchanged
+to preserve evidence of engineering progression.
+
+---
+
+## Engineering Cases
+
+### Case 1 — Withdraw Protection
+
+Protecting account state during withdrawal operations.
+
+### Case 2 — Transfer Safety
+
+Protecting sender and receiver consistency during transfers.
+
+### Case 3 — Error Handling Contract
+
+Designing predictable method behavior
+for invalid operations.
+
+### Case 4 — Protecting System State Through Collections
+
+Protecting internal system state through:
+
+- controlled collections;
+- immutable access;
+- duplicate protection;
+- object copy isolation.
+
+### Case 5 — Keeping Derived State Synchronized
+
+Synchronizing multiple derived structures
+with a single source of truth while preserving
+consistent system state.
+
+### Case 6 — Protecting Domain Contracts Through Type-Safe Modeling
+
+Strengthening domain contracts through carefully selected data types that:
+
+- express business meaning;
+- restrict invalid states;
+- preserve numerical correctness;
+- make system behavior explicit.
+
+---
+
+## Testing Approach
+
+The repository uses scenario-based testing.
+
+Each engineering contract is verified
+through executable tests covering:
+
+- normal scenarios;
+- boundary scenarios;
+- error scenarios;
+- refusal scenarios;
+- state consistency after rejected operations.
+
+The tests verify observable behavior
+rather than implementation details.
+
+---
+
+## Repository Evolution
+
+Early cases intentionally remain unchanged.
+
+Beginning with Case 5,
+larger artifacts are implemented
+in isolated packages to improve scalability
+while preserving the original learning history.
+
+The repository therefore documents
+engineering progression
+rather than continuous refactoring.
+
+---
+
+## Scope
+
+The repository intentionally focuses on:
+
+- domain modeling;
+- engineering reasoning;
+- predictable system behavior.
+
+Frameworks, databases, REST APIs,
+and infrastructure are introduced separately
+as the learning roadmap progresses.
