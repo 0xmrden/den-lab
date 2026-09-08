@@ -99,3 +99,16 @@ become part of the domain contract by:
 - preserving numerical correctness;
 - making system behavior explicit
   before business logic executes.
+
+### Case 7 — Behavior-Preserving Architecture Refactoring
+
+Demonstrating how architectural responsibility
+can be moved to a more appropriate component
+without changing already confirmed system behavior.
+
+The case focuses on:
+
+- separating coordination from domain logic;
+- moving state mutation into the domain object;
+- preserving successful and refusal scenarios;
+- using tests as evidence that behavior remains unchanged.

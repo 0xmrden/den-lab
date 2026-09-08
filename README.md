@@ -1,37 +1,38 @@
-# den-lab
-
 # Java Backend Engineering Lab
 
 ## Overview
 
-This repository documents the gradual evolution of backend engineering thinking
-through practical engineering artifacts.
+This repository contains a sequence of small Java engineering cases.
 
-Rather than presenting isolated programming exercises,
-each artifact demonstrates how business behavior is analyzed,
-modeled, implemented, and verified through automated tests.
+Each case focuses on a specific problem in system behavior,
+state management, domain modeling,
+or responsibility distribution.
 
-The focus is on building predictable systems whose behavior is protected by
-engineering contracts, validation, and executable tests.
+The repository shows how these problems are analyzed,
+implemented, and verified with automated tests.
+
+Earlier cases are intentionally preserved
+to make the progression visible over time.
 
 ---
 
 ## Engineering Focus
 
-The repository demonstrates:
+The cases currently cover:
 
-- domain modeling;
-- engineering contracts;
-- invariant protection;
-- fail-fast / fail-safe behavior;
-- state consistency;
+- operation and state protection;
+- predictable error and refusal behavior;
 - collection safety;
 - derived state synchronization;
-- type-safe domain modeling;
+- domain modeling;
+- type-safe modeling;
+- separation of responsibilities;
+- behavior-preserving refactoring;
 - scenario-based automated testing.
 
-The goal is correctness, predictability,
-and clarity rather than architectural complexity.
+The emphasis is on clear behavior
+and evidence through tests,
+not on architectural complexity.
 
 ---
 
@@ -45,35 +46,36 @@ test/
     automated tests
 
 cases/
-    engineering case documentation
+    documentation for each engineering case
 
 practice/
     local experiments
-    not part of the published artifacts
+    not part of the published cases
 ```
 
 ---
 
 ## Engineering Progression
 
-The repository is intentionally organized
-as a sequence of engineering cases.
+The cases are ordered to show
+a gradual progression in engineering scope.
 
-Early cases focus on protecting
-individual operations and object state.
+Early cases focus on individual operations
+and protecting object state.
 
-Later cases gradually expand toward:
+Later cases expand toward:
 
-- collection safety;
-- derived state synchronization;
-- domain modeling;
-- type-safe business contracts.
+- safe use of collections;
+- synchronization of related state;
+- stronger domain modeling;
+- type-safe contracts;
+- responsibility distribution between components;
+- refactoring without changing confirmed behavior.
 
-Each new artifact builds upon ideas introduced
-in previous cases while remaining independently understandable.
+Each case remains independently understandable.
 
-Earlier artifacts intentionally remain unchanged
-to preserve evidence of engineering progression.
+Earlier implementations are intentionally left unchanged
+instead of being rewritten to match later approaches.
 
 ---
 
@@ -81,20 +83,22 @@ to preserve evidence of engineering progression.
 
 ### Case 1 — Withdraw Protection
 
-Protecting account state during withdrawal operations.
+Protecting account state
+during rejected withdrawal operations.
 
 ### Case 2 — Transfer Safety
 
-Protecting sender and receiver consistency during transfers.
+Protecting sender and receiver state
+during transfer operations.
 
 ### Case 3 — Error Handling Contract
 
-Designing predictable method behavior
-for invalid operations.
+Defining predictable method behavior
+for invalid and rejected operations.
 
 ### Case 4 — Protecting System State Through Collections
 
-Protecting internal system state through:
+Protecting internal state through:
 
 - controlled collections;
 - immutable access;
@@ -103,62 +107,73 @@ Protecting internal system state through:
 
 ### Case 5 — Keeping Derived State Synchronized
 
-Synchronizing multiple derived structures
-with a single source of truth while preserving
-consistent system state.
+Keeping multiple derived structures synchronized
+with a single source of truth
+while preserving consistent state.
 
 ### Case 6 — Protecting Domain Contracts Through Type-Safe Modeling
 
-Strengthening domain contracts through carefully selected data types that:
+Using data types as part of the domain model to:
 
 - express business meaning;
 - restrict invalid states;
 - preserve numerical correctness;
-- make system behavior explicit.
+- make behavior more explicit.
+
+### Case 7 — Behavior-Preserving Architecture Refactoring
+
+Moving withdrawal responsibility
+from `WalletService` into `Wallet`
+while preserving the confirmed behavior.
+
+The case demonstrates:
+
+- separation of scenario coordination from domain logic;
+- ownership of state changes by the object that holds the state;
+- targeted architectural refactoring;
+- tests before and after the refactoring.
 
 ---
 
 ## Testing Approach
 
-The repository uses scenario-based testing.
+The repository uses automated,
+scenario-based tests.
 
-Each engineering contract is verified
-through executable tests covering:
+Across the cases, tests cover scenarios such as:
 
-- normal scenarios;
-- boundary scenarios;
-- error scenarios;
-- refusal scenarios;
-- state consistency after rejected operations.
+- successful operations;
+- rejected operations;
+- invalid input;
+- boundary conditions;
+- state preservation after rejection.
 
-The tests verify observable behavior
-rather than implementation details.
+The tests focus primarily on observable behavior
+rather than internal implementation details.
 
 ---
 
 ## Repository Evolution
 
-Early cases intentionally remain unchanged.
+The repository preserves earlier cases
+instead of continuously rewriting them.
 
 Beginning with Case 5,
-larger artifacts are implemented
-in isolated packages to improve scalability
-while preserving the original learning history.
+larger artifacts are placed
+in dedicated packages.
 
-The repository therefore documents
-engineering progression
-rather than continuous refactoring.
+This keeps newer cases isolated
+while preserving earlier implementations
+as evidence of the learning progression.
 
 ---
 
 ## Scope
 
-The repository intentionally focuses on:
+This repository currently focuses on:
 
-- domain modeling;
+- Java domain logic;
+- system behavior;
+- state consistency;
 - engineering reasoning;
-- predictable system behavior.
-
-Frameworks, databases, REST APIs,
-and infrastructure are introduced separately
-as the learning roadmap progresses.
+- automated verification.
